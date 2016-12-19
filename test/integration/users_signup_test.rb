@@ -26,5 +26,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
         password_confirmation: "password" }
     end
     assert_template 'users/show'
+    assert flash.any?
   end
 end
