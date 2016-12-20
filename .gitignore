@@ -59,3 +59,6 @@ build-iPhoneSimulator/
 
 # Ignore Spring files.
 /spring/*.pid
+
+# ctags
+tags
