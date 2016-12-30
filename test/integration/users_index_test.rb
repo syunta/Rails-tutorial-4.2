@@ -29,4 +29,13 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     get users_path
     assert_select 'a', text: 'delete', count: 0
   end
+
+  test "index with unactivated" do
+    @non_admin.update_attribute(:activated, false)
+
+    log_in_as(@admin)
+    get users_path
+    users = assigns(:users)
+    assert_equal 1, User.count - users.total_entries
+  end
 end

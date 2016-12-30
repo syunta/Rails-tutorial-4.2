@@ -11,6 +11,13 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to login_url
   end
 
+  test "should redirect show when not activated" do
+    log_in_as(@user)
+    @other_user.update_attribute(:activated, false)
+    get :show, id: @other_user
+    assert_redirected_to root_url
+  end
+
   test "should get new" do
     get :new
     assert_response :success
