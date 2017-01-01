@@ -62,3 +62,6 @@ build-iPhoneSimulator/
 
 # ctags
 tags
+
+# Ignore uploaded test images.
+/public/uploads/
