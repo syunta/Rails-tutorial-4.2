@@ -20,4 +20,12 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "profile stats" do
+    get user_path(@user)
+    assert_select 'a[href=?]', followers_user_path(@user), count: 1
+    assert_select 'a>strong', @user.followers.count
+    assert_select 'a[href=?]', following_user_path(@user), count: 1
+    assert_select 'a>strong', @user.following.count
+  end
+
 end
